@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Homework:Flipping Cards</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="flashcards-app">
+  
+  <div>
+    <input v-model="inputQ" placeholder="Add a Question" /> <br>
+    <input v-model="inputA" placeholder=" Add the Answer" /> <br> 
+    <input type="radio" value="history" v-model="catSelect" /> History <br> 
+    <input type="radio" value="math" v-model="catSelect" /> Math <br> 
+    <input type="radio" value="science" v-model="catSelect"/> Science <br>     
+    <button v-on:click="submit"> Submit </button>
+  </div>
+
+    <div v-for="card in cards">
+       <div class="card">
+         <div v-bind:class="card.category" class="top"> </div>
+         <div v-on:click="card.flipped=!card.flipped" v-show="!card.flipped" class="side1"> 
+           
+           <h1>{{card.question}}</h1>
+         </div>
+         <div v-on:click="card.flipped=! card.flipped" v-show="card.flipped" class="side2">
+           <h1>{{card.answer}}</h1>
+         </div>
+      </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
